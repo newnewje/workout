@@ -3,58 +3,62 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#1f6f4a">
+<meta name="theme-color" content="#0a0a0b">
 <title>운동기록</title>
 <style>
-:root{--bg:#f3f1ec;--card:#fff;--tx:#1d2420;--sub:#6c746f;--ac:#1f6f4a;--ac2:#d9efe3;--hot:#e8590c;--bd:#e3e0d8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121513;--card:#1b201d;--tx:#eef2ef;--sub:#97a29b;--ac:#5fd39a;--ac2:#1d3a2c;--hot:#ff8a4c;--bd:#2b322e}}
-:root[data-theme="dark"]{--bg:#121513;--card:#1b201d;--tx:#eef2ef;--sub:#97a29b;--ac:#5fd39a;--ac2:#1d3a2c;--hot:#ff8a4c;--bd:#2b322e}
+:root{--bg:#0a0a0b;--card:#161618;--c2:#222225;--bd:rgba(255,255,255,.07);--tx:#f5f5f7;--sub:#8e8e93;--ac:#f5f5f7;--acx:#0a0a0b;--hot:#f59e0b;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0}
-body{background:var(--bg);color:var(--tx);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;max-width:480px;margin:0 auto;padding:16px 14px 96px;background-color:var(--bg)}
-h1{font-size:22px;margin:4px 2px 2px;letter-spacing:-.5px}
-.sub{color:var(--sub);font-size:13px;margin:0 2px 14px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px}
-.card h2{font-size:15px;margin:0 0 10px}
-label{display:block;font-size:12px;color:var(--sub);margin:0 0 4px}
+html{background:var(--bg)}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;max-width:480px;margin:0 auto;padding:22px 16px 108px;-webkit-font-smoothing:antialiased}
+h1{font-size:30px;font-weight:700;margin:6px 4px 4px;letter-spacing:-.9px}
+.sub{color:var(--sub);font-size:13px;margin:0 4px 22px}
+.card{background:var(--card);border-radius:20px;padding:20px;margin-bottom:14px}
+.card h2{font-size:13px;font-weight:600;color:var(--sub);margin:0 0 16px}
+.row h2{color:var(--tx);font-size:16px}
+label{display:block;font-size:12px;font-weight:500;color:var(--sub);margin:0 0 6px}
 input,select,button{font:inherit;color:inherit}
-input,select{width:100%;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);font-size:16px}
-.row{display:flex;gap:8px}.row>div{flex:1}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
-.chip{border:1px solid var(--bd);background:var(--bg);border-radius:20px;padding:6px 11px;font-size:13px}
-.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
-.btn{width:100%;padding:14px;border:0;border-radius:12px;background:var(--ac);color:#fff;font-weight:700;font-size:16px;margin-top:12px}
-.btn.ghost{background:transparent;color:var(--sub);border:1px solid var(--bd);font-weight:500;font-size:13px;padding:10px;margin-top:8px}
-.item{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--bd)}
-.item:first-of-type{border-top:0}
-.item .t{flex:1}.item b{font-size:15px}.item small{display:block;color:var(--sub);font-size:12px;margin-top:2px}
+input,select{width:100%;padding:14px;border:0;border-radius:12px;background:var(--c2);color:var(--tx);font-size:16px}
+input[type=date]{min-height:50px}
+.row{display:flex;gap:10px}.row>div{flex:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.chip{border:0;background:var(--c2);color:var(--tx);border-radius:20px;padding:8px 14px;font-size:13px}
+.chip.on{background:var(--ac);color:var(--acx);font-weight:600}
+.btn{width:100%;padding:16px;border:0;border-radius:14px;background:var(--ac);color:var(--acx);font-weight:600;font-size:16px;margin-top:18px}
+.btn.ghost{background:transparent;color:var(--sub);border:1px solid var(--bd);font-weight:500;font-size:13px;padding:12px;margin-top:10px}
+.item{display:flex;align-items:center;gap:10px;padding:14px 0;border-top:1px solid var(--bd)}
+.item:first-of-type{border-top:0;padding-top:0}
+.item .t{flex:1}.item b{font-size:15px;font-weight:600}.item small{display:block;color:var(--sub);font-size:12px;margin-top:3px}
 .x{border:0;background:none;color:var(--sub);font-size:20px;padding:4px 8px}
-.badge{display:inline-block;background:var(--hot);color:#fff;border-radius:8px;font-size:11px;padding:2px 7px;margin-left:6px;font-weight:700}
-.seg{display:flex;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:3px;margin-bottom:12px}
-.seg button{flex:1;border:0;background:none;padding:8px;border-radius:8px;font-size:14px;color:var(--sub)}
-.seg button.on{background:var(--ac);color:#fff;font-weight:700}
-.nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.badge{display:inline-block;color:var(--hot);border:1px solid var(--hot);border-radius:6px;font-size:10px;padding:1px 6px;margin-left:8px;font-weight:600;vertical-align:1px}
+.seg{display:flex;background:var(--card);border-radius:12px;padding:3px;margin-bottom:14px}
+.seg button{flex:1;border:0;background:none;padding:10px;border-radius:9px;font-size:14px;font-weight:500;color:var(--sub)}
+.seg button.on{background:var(--ac);color:var(--acx);font-weight:600}
+.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(10,10,11,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-top:1px solid var(--bd);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
 .nav div{display:flex;width:100%;max-width:480px}
-.nav button{flex:1;border:0;background:none;padding:10px 0 9px;font-size:11px;color:var(--sub)}
-.nav button span{display:block;font-size:20px;margin-bottom:2px}
-.nav button.on{color:var(--ac);font-weight:700}
-.toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:var(--hot);color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;z-index:9;box-shadow:0 6px 20px rgba(0,0,0,.25);font-size:15px;max-width:92%;text-align:center}
+.nav button{flex:1;border:0;background:none;padding:10px 0 8px;font-size:10px;font-weight:500;color:#636366}
+.nav button span{display:block;line-height:0;margin-bottom:4px}
+.nav button.on{color:var(--ac)}
+.nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:var(--hot);color:#0a0a0b;padding:12px 18px;border-radius:14px;font-weight:600;z-index:9;box-shadow:0 8px 24px rgba(0,0,0,.5);font-size:15px;max-width:92%;text-align:center}
 .tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.tile{border-radius:12px;padding:12px 6px;text-align:center;border:1px solid var(--bd)}
-.tile b{display:block;font-size:20px}.tile small{font-size:12px;color:var(--tx)}
-.bar{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
-.bar i{display:block;height:12px;border-radius:6px;background:var(--ac)}
-.bar span:first-child{width:58px;flex:none}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}
-.cal div{aspect-ratio:1;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--bg);color:var(--sub)}
-.cal .h{background:none;aspect-ratio:auto;font-size:11px}
-.cal .d1{background:var(--ac2);color:var(--tx)}.cal .d2{background:var(--ac);color:#fff}.cal .d3{background:var(--ac);color:#fff;box-shadow:inset 0 0 0 2px var(--hot)}
-.cal .now{outline:2px solid var(--tx);outline-offset:-2px}
-.cal div:not(.h){cursor:pointer}.cal .wk{outline:2px solid var(--ac);outline-offset:-2px}.cal .sel{outline:3px solid var(--hot);outline-offset:-3px}
-.stat{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid var(--bd);font-size:14px}
-.stat:first-of-type{border-top:0}
-.up{color:var(--ac);font-weight:700}.dn{color:var(--sub)}
-.empty{text-align:center;color:var(--sub);padding:22px 8px;font-size:14px;line-height:1.6}
+.tile{background:var(--c2);border-radius:14px;padding:14px 12px 12px;text-align:left}
+.tile b{display:block;font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.1}
+.tile small{display:block;font-size:12px;color:var(--sub);margin-top:5px}
+.tile i{display:block;height:3px;border-radius:2px;background:var(--tx);margin-top:12px;opacity:.85}
+.bar{display:flex;align-items:center;gap:10px;margin:11px 0;font-size:13px}
+.bar i{display:block;height:6px;border-radius:3px;background:var(--tx)}
+.bar span:first-child{width:58px;flex:none;color:var(--sub)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.cal div{aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;background:var(--c2);color:var(--sub)}
+.cal .h{background:none;aspect-ratio:auto;font-size:11px;color:#636366}
+.cal .d1{background:#3a3a3e;color:var(--tx)}.cal .d2{background:#8e8e93;color:#0a0a0b;font-weight:600}.cal .d3{background:var(--ac);color:var(--acx);font-weight:700}
+.cal div:not(.h){cursor:pointer}
+.cal .now{text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.cal .wk{box-shadow:inset 0 0 0 1px #636366}.cal .sel{outline:2px solid var(--tx);outline-offset:1px}
+.stat{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-top:1px solid var(--bd);font-size:14px}
+.stat:first-of-type{border-top:0;padding-top:0}
+.up{color:var(--tx);font-weight:700}.dn{color:var(--sub)}
+.empty{text-align:center;color:var(--sub);padding:24px 8px;font-size:14px;line-height:1.7}
 svg text{font-family:inherit}
 </style></head><body>
 <h1 id="ttl"></h1><p class="sub" id="sub"></p>
@@ -70,24 +74,31 @@ function ds(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate(
 function today(){return ds(new Date())}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function ago(n){var d=new Date();d.setDate(d.getDate()-n);return ds(d)}
-var S={tab:'rec',sd:ds(new Date()),f:{part:'가슴',ex:'',w:'',r:'',s:''},gEx:'',bal:7,per:'오늘',cm:new Date().getMonth(),cy:new Date().getFullYear()};
-var TABS=[['rec','🏋️','기록'],['grow','📈','성장'],['bal','🎯','밸런스'],['att','🔥','출석']];
+var S={tab:'rec',sd:ds(new Date()),rd:ds(new Date()),g1:'',g2:'',f:{part:'가슴',ex:'',w:'',r:'',s:'',m:''},gEx:'',bal:7,per:'오늘',cm:new Date().getMonth(),cy:new Date().getFullYear()};
+var TABS=[['rec','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>','기록'],['grow','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>','성장'],['bal','<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9"/></svg>','밸런스'],['att','<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>','출석']];
 
 function toast(m){var t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2600)}
 function sum(a,k){return a.reduce(function(x,e){return x+e[k]},0)}
 
 function add(){
-  var f=S.f,ex=f.ex.trim(),w=parseFloat(f.w)||0,r=parseInt(f.r),s=parseInt(f.s);
+  var f=S.f,ex=f.ex.trim(),cd=f.part==='유산소/스트레칭';
   if(!ex){toast('종목을 입력하거나 선택하세요');return}
+  if(cd){
+    var mm=parseInt(f.m);
+    if(!(mm>0)){toast('시간(분)을 입력하세요');return}
+    D.push({id:Date.now(),date:S.rd,part:f.part,ex:ex,w:0,r:0,s:0,m:mm,pr:''});
+    save();S.f.m='';render();toast('기록을 추가했어요');return;
+  }
+  var w=parseFloat(f.w)||0,r=parseInt(f.r),s=parseInt(f.s);
   if(!(r>0)||!(s>0)){toast('횟수와 세트 수를 입력하세요');return}
-  var prev=D.filter(function(e){return e.ex===ex});
+  var prev=D.filter(function(e){return e.ex===ex&&e.date<=S.rd&&!e.m});
   var pm=prev.length?Math.max.apply(null,prev.map(function(e){return e.w})):0,pr='';
   if(prev.length&&w>pm){pr='w';toast('🔥 최고 기록 갱신! '+ex+' '+w+'kg')}
   else if(prev.length&&w>0&&w===pm){
     var ps=Math.max.apply(null,prev.filter(function(e){return e.w===pm}).map(function(e){return e.s}));
     if(s>ps){pr='s';toast('💪 세트 수 신기록! '+ex+' '+s+'세트')}
   }
-  D.push({id:Date.now(),date:today(),part:f.part,ex:ex,w:w,r:r,s:s,pr:pr});
+  D.push({id:Date.now(),date:S.rd,part:f.part,ex:ex,w:w,r:r,s:s,pr:pr});
   save();S.f.w='';S.f.r='';S.f.s='';render();
 }
 function del(id){D=D.filter(function(e){return e.id!==id});save();render()}
@@ -100,63 +111,74 @@ function exList(){
   return l;
 }
 
+function fmtE(e){return e.m?e.m+'분':(e.w?fmtN(e.w)+'kg ':'')+e.r+'회 '+e.s+'세트'}
+function mins(l){return l.reduce(function(x,e){return x+(e.m||0)},0)}
 function vRec(){
-  var h='<div class="card"><h2>오늘의 운동 기록</h2><label>운동 부위</label><select onchange="pickPart(this.value)">'+
+  var cd=S.f.part==='유산소/스트레칭';
+  var h='<div class="card"><h2>운동 기록</h2><label>날짜</label><input type="date" value="'+S.rd+'" max="'+today()+'" onchange="S.rd=this.value||today();render()" style="margin-bottom:10px"><label>운동 부위</label><select onchange="pickPart(this.value)">'+
   PARTS.map(function(p){return '<option'+(p===S.f.part?' selected':'')+'>'+p+'</option>'}).join('')+'</select>'+
   '<div class="chips">'+exList().map(function(x){return '<button class="chip'+(x===S.f.ex?' on':'')+'" onclick="pickEx(this.dataset.v)" data-v="'+esc(x)+'">'+esc(x)+'</button>'}).join('')+'</div>'+
-  '<label>종목 (선택하거나 직접 입력)</label><input value="'+esc(S.f.ex)+'" placeholder="예: 벤치프레스" oninput="setF(\'ex\',this.value)">'+
-  '<div class="row" style="margin-top:10px"><div><label>무게(kg)</label><input type="number" inputmode="decimal" value="'+esc(S.f.w)+'" oninput="setF(\'w\',this.value)"></div>'+
+  '<label>종목 (선택하거나 직접 입력)</label><input value="'+esc(S.f.ex)+'" placeholder="예: 벤치프레스" oninput="setF(\'ex\',this.value)">';
+  if(cd)h+='<div style="margin-top:10px"><label>시간(분)</label><input type="number" inputmode="numeric" placeholder="예: 30" value="'+esc(S.f.m)+'" oninput="setF(\'m\',this.value)"></div>';
+  else h+='<div class="row" style="margin-top:10px"><div><label>무게(kg)</label><input type="number" inputmode="decimal" value="'+esc(S.f.w)+'" oninput="setF(\'w\',this.value)"></div>'+
   '<div><label>횟수(회)</label><input type="number" inputmode="numeric" value="'+esc(S.f.r)+'" oninput="setF(\'r\',this.value)"></div>'+
-  '<div><label>세트</label><input type="number" inputmode="numeric" value="'+esc(S.f.s)+'" oninput="setF(\'s\',this.value)"></div></div>'+
-  '<button class="btn" onclick="add()">기록 추가</button></div>';
-  var t=D.filter(function(e){return e.date===today()});
-  h+='<div class="card"><h2>오늘 한 운동 · '+sum(t,'s')+'세트</h2>';
-  if(!t.length)h+='<div class="empty">아직 기록이 없어요.<br>위에서 첫 운동을 추가해 보세요.</div>';
+  '<div><label>세트</label><input type="number" inputmode="numeric" value="'+esc(S.f.s)+'" oninput="setF(\'s\',this.value)"></div></div>';
+  h+='<button class="btn" onclick="add()">기록 추가</button></div>';
+  var t=D.filter(function(e){return e.date===S.rd}),lab=S.rd===today()?'오늘':fmtD(S.rd);
+  h+='<div class="card"><h2>'+lab+' 한 운동 · '+sum(t,'s')+'세트'+(mins(t)?' · 유산소 '+mins(t)+'분':'')+'</h2>';
+  if(!t.length)h+='<div class="empty">이 날은 아직 기록이 없어요.<br>위에서 운동을 추가해 보세요.</div>';
   t.slice().reverse().forEach(function(e){
-    h+='<div class="item"><div class="t"><b>'+esc(e.ex)+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</b><small>'+esc(e.part)+' · '+(e.w?e.w+'kg × ':'')+e.r+'회 × '+e.s+'세트</small></div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>';
+    h+='<div class="item"><div class="t"><b>'+esc(e.ex)+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</b><small>'+esc(e.part)+' · '+fmtE(e)+'</small></div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>';
   });
   return h+'</div>';
 }
 
+function md(k){return (+k.slice(5,7))+'/'+(+k.slice(8,10))}
 function vGrow(){
-  var exs=[];D.forEach(function(e){if(exs.indexOf(e.ex)<0)exs.push(e.ex)});
+  var exs=[];D.forEach(function(e){if(e.w>0&&exs.indexOf(e.ex)<0)exs.push(e.ex)});
   if(!exs.length)return '<div class="card"><div class="empty">기록이 쌓이면 종목별 최고 무게 그래프가 나타나요.<br>출석 탭 아래의 "샘플 데이터 채우기"로 미리 체험할 수도 있어요.</div></div>';
   if(exs.indexOf(S.gEx)<0)S.gEx=exs[0];
-  var m={};D.filter(function(e){return e.ex===S.gEx}).forEach(function(e){m[e.date]=Math.max(m[e.date]||0,e.w)});
-  var ks=Object.keys(m).sort(),v=ks.map(function(k){return m[k]});
-  var W=320,H=190,p=30,mn=Math.min.apply(null,v),mx=Math.max.apply(null,v);
-  var lo=mn===mx?mn-5:mn-(mx-mn)*.2,hi=mn===mx?mx+5:mx+(mx-mn)*.2;
-  function X(i){return ks.length===1?W/2:p+i*(W-2*p)/(ks.length-1)}
-  function Y(x){return H-p-(x-lo)/(hi-lo)*(H-2*p)}
-  var run=0,pts='',dots='',prs=[];
-  ks.forEach(function(k,i){
-    var pr=run>0&&v[i]>run;if(pr)prs.push([k,v[i]]);run=Math.max(run,v[i]);
-    pts+=X(i)+','+Y(v[i])+' ';
-    dots+='<circle cx="'+X(i)+'" cy="'+Y(v[i])+'" r="'+(pr?6:4)+'" fill="'+(pr?'var(--hot)':'var(--ac)')+'"/>';
-    if(pr||ks.length<=7)dots+='<text x="'+X(i)+'" y="'+(Y(v[i])-10)+'" text-anchor="middle" font-size="11" fill="var(--tx)">'+v[i]+'</text>';
-  });
-  var svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="최고 무게 추이"><line x1="'+p+'" y1="'+(H-p)+'" x2="'+(W-p)+'" y2="'+(H-p)+'" stroke="var(--bd)"/><polyline points="'+pts+'" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linejoin="round"/>'+dots+
-  '<text x="'+p+'" y="'+(H-8)+'" font-size="10" fill="var(--sub)">'+ks[0].slice(5)+'</text><text x="'+(W-p)+'" y="'+(H-8)+'" text-anchor="end" font-size="10" fill="var(--sub)">'+ks[ks.length-1].slice(5)+'</text></svg>';
+  var m={};D.filter(function(e){return e.ex===S.gEx&&e.w>0}).forEach(function(e){m[e.date]=Math.max(m[e.date]||0,e.w)});
+  var all=Object.keys(m).sort(),run=0,isPr={};
+  all.forEach(function(k){if(run>0&&m[k]>run)isPr[k]=1;run=Math.max(run,m[k])});
+  var ks=all.filter(function(k){return (!S.g1||k>=S.g1)&&(!S.g2||k<=S.g2)}),v=ks.map(function(k){return m[k]});
   var h='<div class="card"><h2>종목별 최고 무게(PR) 추이</h2><select onchange="S.gEx=this.value;render()">'+exs.map(function(x){return '<option'+(x===S.gEx?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select>'+
-  '<div style="margin-top:12px">'+svg+'</div><p class="sub" style="margin:4px 0 0">날짜별 최고 중량(kg) · 주황 점은 기록 갱신</p></div>';
-  h+='<div class="card"><h2>🔥 기록 갱신 내역</h2>';
-  h+='<div class="stat"><span>현재 최고 무게</span><b>'+mx+'kg</b></div>';
-  if(!prs.length)h+='<div class="empty" style="padding:12px">아직 갱신 기록이 없어요. 다음 기록에서 도전!</div>';
-  prs.slice().reverse().forEach(function(x){h+='<div class="stat"><span>'+x[0]+'</span><span>'+x[1]+'kg <span class="badge">🔥 최고 기록 갱신!</span></span></div>'});
+  '<div class="row" style="margin-top:10px"><div><label>시작일</label><input type="date" value="'+S.g1+'" onchange="S.g1=this.value;render()"></div><div><label>종료일</label><input type="date" value="'+S.g2+'" onchange="S.g2=this.value;render()"></div></div>'+
+  ((S.g1||S.g2)?'<button class="btn ghost" onclick="S.g1=\'\';S.g2=\'\';render()">전체 기간 보기</button>':'');
+  if(!ks.length)return h+'<div class="empty">이 기간에는 기록이 없어요.</div></div>';
+  var W=340,H=210,pl=30,pR=30,pt=22,pb=38,mn=Math.min.apply(null,v),mx=Math.max.apply(null,v);
+  var lo=mn===mx?mn-5:mn-(mx-mn)*.2,hi=mn===mx?mx+5:mx+(mx-mn)*.2,n=ks.length,st=Math.ceil(n/7);
+  function X(i){return n===1?W/2:pl+i*(W-pl-pR)/(n-1)}
+  function Y(x){return H-pb-(x-lo)/(hi-lo)*(H-pt-pb)}
+  var pts='',dots='',tk='';
+  ks.forEach(function(k,i){
+    var q=isPr[k];pts+=X(i)+','+Y(v[i])+' ';
+    dots+='<circle cx="'+X(i)+'" cy="'+Y(v[i])+'" r="'+(q?6:4)+'" fill="'+(q?'var(--hot)':'var(--ac)')+'"/>';
+    if(q||n<=7)dots+='<text x="'+X(i)+'" y="'+(Y(v[i])-10)+'" text-anchor="middle" font-size="11" fill="var(--tx)">'+v[i]+'</text>';
+    if(i%st===0||(i===n-1&&(n-1)%st>=Math.ceil(st/2)))tk+='<line x1="'+X(i)+'" y1="'+(H-pb)+'" x2="'+X(i)+'" y2="'+(H-pb+4)+'" stroke="var(--sub)"/><text x="'+X(i)+'" y="'+(H-pb+17)+'" text-anchor="middle" font-size="10" fill="var(--sub)">'+md(k)+'</text>';
+  });
+  h+='<div style="margin-top:12px"><svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="최고 무게 추이"><line x1="'+pl+'" y1="'+(H-pb)+'" x2="'+(W-pR)+'" y2="'+(H-pb)+'" stroke="var(--bd)"/><polyline points="'+pts+'" fill="none" stroke="var(--ac)" stroke-width="2.5" stroke-linejoin="round"/>'+dots+tk+'</svg></div><p class="sub" style="margin:4px 0 0">날짜별 최고 중량(kg) · 주황 점은 기록 갱신</p></div>';
+  h+='<div class="card"><h2>🔥 기록 갱신 내역</h2><div class="stat"><span>이 기간 최고 무게</span><b>'+mx+'kg</b></div>';
+  var prs=ks.filter(function(k){return isPr[k]});
+  if(!prs.length)h+='<div class="empty" style="padding:12px">이 기간에는 갱신 기록이 없어요.</div>';
+  prs.slice().reverse().forEach(function(k){h+='<div class="stat"><span>'+md(k)+'</span><span>'+m[k]+'kg <span class="badge">🔥 최고 기록 갱신!</span></span></div>'});
   return h+'</div>';
 }
 
 function vBal(){
-  var from=ago(S.bal-1),l=D.filter(function(e){return e.date>=from}),tot=sum(l,'s'),c={};
-  PARTS.forEach(function(p){c[p]=0});l.forEach(function(e){c[e.part]=(c[e.part]||0)+e.s});
-  var mx=Math.max.apply(null,PARTS.map(function(p){return c[p]}))||1;
+  var from=ago(S.bal-1),l=D.filter(function(e){return e.date>=from}),tot=sum(l,'s'),c={},rp={},cs=0,mn=mins(l),CD='유산소/스트레칭',trp=0;
+  PARTS.forEach(function(p){c[p]=0;rp[p]=0});
+  l.forEach(function(e){c[e.part]=(c[e.part]||0)+e.s;rp[e.part]=(rp[e.part]||0)+e.r*e.s;if(e.m)cs++});
+  PARTS.forEach(function(p){trp+=rp[p]});
   var h='<div class="seg"><button class="'+(S.bal===7?'on':'')+'" onclick="S.bal=7;render()">최근 7일</button><button class="'+(S.bal===30?'on':'')+'" onclick="S.bal=30;render()">최근 30일</button></div>';
-  if(!tot)return h+'<div class="card"><div class="empty">이 기간의 기록이 없어요.</div></div>';
-  h+='<div class="card"><h2>부위별 히트맵 · 총 '+tot+'세트</h2><div class="tiles">'+PARTS.map(function(p){
-    var a=c[p]/mx;return '<div class="tile" style="background:color-mix(in srgb,var(--ac) '+Math.round(a*85)+'%,var(--card))'+(a>.55?';color:#fff':'')+'"><b>'+c[p]+'</b><small style="'+(a>.55?'color:#fff':'')+'">'+p.split('/')[0]+'</small></div>'}).join('')+'</div></div>';
-  h+='<div class="card"><h2>비중</h2>'+PARTS.map(function(p){return '<div class="bar"><span>'+p.split('/')[0]+'</span><i style="width:'+(c[p]/mx*60)+'%;min-width:'+(c[p]?4:0)+'px"></i><span>'+Math.round(c[p]/tot*100)+'%</span></div>'}).join('');
-  var low=PARTS.filter(function(p){return c[p]===0});
-  if(low.length)h+='<p class="sub" style="margin:10px 0 0">💡 '+low.map(function(p){return p.split('/')[0]}).join(', ')+' 운동이 비어 있어요.</p>';
+  if(!l.length)return h+'<div class="card"><div class="empty">이 기간의 기록이 없어요.</div></div>';
+  var mxS=Math.max.apply(null,PARTS.map(function(p){return c[p]}))||1,mxR=Math.max.apply(null,PARTS.map(function(p){return rp[p]}))||1;
+  function tile(p,v,a,u){return '<div class="tile"><b>'+v+'</b><small>'+p.split('/')[0]+u+'</small><i style="width:'+Math.round(Math.max(a,0)*100)+'%"></i></div>'}
+  h+='<div class="card"><h2>총 세트 · '+tot+'세트</h2><div class="tiles">'+PARTS.map(function(p){return p===CD?tile(p,mn+'분',mn?.35:0,' (시간)'):tile(p,c[p],c[p]/mxS,'')}).join('')+'</div></div>';
+  h+='<div class="card"><h2>총 횟수 · '+trp+'회</h2><div class="tiles">'+PARTS.map(function(p){return p===CD?tile(p,cs+'회',cs?.35:0,' (횟수)'):tile(p,rp[p],rp[p]/mxR,'')}).join('')+'</div></div>';
+  h+='<div class="card"><h2>비중</h2>'+PARTS.map(function(p){return p===CD?'<div class="bar"><span>'+p.split('/')[0]+'</span><i style="width:0"></i><span>'+mn+'분</span></div>':'<div class="bar"><span>'+p.split('/')[0]+'</span><i style="width:'+(c[p]/mxS*60)+'%;min-width:'+(c[p]?4:0)+'px"></i><span>'+(tot?Math.round(c[p]/tot*100):0)+'%</span></div>'}).join('');
+  var low=PARTS.filter(function(p){return p===CD?mn===0:c[p]===0});
+  if(low.length)h+='<p class="sub" style="margin:10px 0 0">'+low.map(function(p){return p.split('/')[0]}).join(', ')+' 운동이 비어 있어요.</p>';
   return h+'</div>';
 }
 
@@ -173,16 +195,16 @@ function days(l){var o={};l.forEach(function(e){o[e.date]=1});return Object.keys
 
 function vAtt(){
   var wa=weekStart(S.sd),wb=addD(wa,6),y=S.cy,mo=S.cm,first=new Date(y,mo,1).getDay(),n=new Date(y,mo+1,0).getDate(),by={};
-  D.forEach(function(e){by[e.date]=(by[e.date]||0)+e.s});
+  D.forEach(function(e){by[e.date]=(by[e.date]||0)+(e.s||1)});
   var h='<div class="card"><div class="row" style="align-items:center;margin-bottom:10px"><button class="x" onclick="mv(-1)">‹</button><h2 style="margin:0;text-align:center;flex:3">'+y+'년 '+(mo+1)+'월</h2><button class="x" onclick="mv(1)">›</button></div><div class="cal">'+
   ['일','월','화','수','목','금','토'].map(function(x){return '<div class="h">'+x+'</div>'}).join('');
   for(var i=0;i<first;i++)h+='<div style="background:none"></div>';
   for(var d=1;d<=n;d++){
     var k=y+'-'+pad(mo+1)+'-'+pad(d),s=by[k]||0,c=s?(s>=12?'d3':s>=6?'d2':'d1'):'';
-    h+='<div class="'+c+(k===today()?' now':'')+(S.per==='일주일'&&k>=wa&&k<=wb?' wk':'')+(k===S.sd?' sel':'')+'" onclick="pickD(\''+k+'\')">'+(s?'🔥':d)+'</div>';
+    h+='<div class="'+c+(k===today()?' now':'')+(S.per==='일주일'&&k>=wa&&k<=wb?' wk':'')+(k===S.sd?' sel':'')+'" onclick="pickD(\''+k+'\')">'+d+'</div>';
   }
   var mk=y+'-'+pad(mo+1),ml=D.filter(function(e){return e.date.slice(0,7)===mk});
-  h+='</div><p class="sub" style="margin:10px 0 0">운동한 날 '+days(ml)+'일 · 불꽃이 진할수록 세트가 많은 날</p></div>';
+  h+='</div><p class="sub" style="margin:10px 0 0">운동한 날 '+days(ml)+'일 · 밝을수록 세트가 많은 날</p></div>';
   h+='<div class="seg">'+['오늘','일주일','이번 달'].map(function(p){return '<button class="'+(S.per===p?'on':'')+'" onclick="S.per=\''+p+'\';render()">'+p+'</button>'}).join('')+'</div>';
   var r=range(S.per),cu=sel(r.a,r.b),pv=sel(r.pa,r.pb);
   if(S.per==='오늘')h+=dayNav()+prBox(cu)+dayTotal(cu,pv)+dayDetail(cu);else if(S.per==='일주일')h+=weekView(cu,pv,r);else if(S.per==='이번 달')h+=monthView(cu,pv,r);else h+='<div class="card"><h2>'+(S.per==='오늘'&&S.sd!==today()?fmtD(S.sd):S.per)+' 요약</h2>'+
@@ -201,17 +223,17 @@ function prList(l){var out=[],seen={};
   if(pv.length){var pm=Math.max.apply(null,pv);if(m>pm)out.push('🔥 '+e.ex+' '+fmtN(m)+'kg 달성 (+'+fmtN(m-pm)+'kg)')}}});
  l.forEach(function(e){if(e.pr==='s')out.push('💪 '+e.ex+' '+e.s+'세트 신기록')});
  return out}
-function prBox(l){var p=prList(l);if(!p.length)return '';return '<div class="card" style="background:var(--hot);color:#fff;border:0"><div style="font-size:12px;opacity:.9;margin-bottom:6px">'+(S.sd===today()?'오늘':fmtD(S.sd))+' 새로 세운 기록</div>'+p.map(function(t){return '<div style="font-size:17px;font-weight:700;margin:4px 0">'+esc(t)+'</div>'}).join('')+'</div>'}
-function dayTotal(l,pv){return '<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 총 볼륨</h2><div style="font-size:22px;font-weight:800;letter-spacing:-.5px">총 '+sum(l,'s')+'세트 / '+fmtN(vol(l))+'kg 들어올림</div><p class="sub" style="margin:8px 0 0">전날: '+sum(pv,'s')+'세트 / '+fmtN(vol(pv))+'kg</p></div>'}
-function dayDetail(l){var h='<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 한 운동</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.part.split('/')[0])+': '+esc(e.ex)+' '+(e.w?fmtN(e.w)+'kg ':'')+e.r+'회 '+e.s+'세트</b>'+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>'});return h+'</div>'}
+function prBox(l){var p=prList(l);if(!p.length)return '';return '<div class="card" style="box-shadow:inset 0 0 0 1px var(--hot)"><div style="font-size:12px;font-weight:600;color:var(--hot);margin-bottom:8px">'+(S.sd===today()?'오늘':fmtD(S.sd))+' 새로 세운 기록</div>'+p.map(function(t){return '<div style="font-size:17px;font-weight:700;color:var(--hot);margin:6px 0">'+esc(t)+'</div>'}).join('')+'</div>'}
+function dayTotal(l,pv){return '<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 총 볼륨</h2><div style="font-size:28px;font-weight:700;letter-spacing:-.9px">총 '+sum(l,'s')+'세트 / '+fmtN(vol(l))+'kg 들어올림'+(mins(l)?' · 유산소 '+mins(l)+'분':'')+'</div><p class="sub" style="margin:8px 0 0">전날: '+sum(pv,'s')+'세트 / '+fmtN(vol(pv))+'kg</p></div>'}
+function dayDetail(l){var h='<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 한 운동</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.part.split('/')[0])+': '+esc(e.ex)+' '+fmtE(e)+'</b>'+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>'});return h+'</div>'}
 function addD(k,n){var d=new Date(k+'T00:00:00');d.setDate(d.getDate()+n);return ds(d)}
 function weekStart(k){var d=new Date(k+'T00:00:00');return addD(k,-d.getDay())}
-var PC={'가슴':'#e8590c','등':'#1f9d6b','어깨':'#3b82f6','하체':'#a855f7','팔':'#eab308','유산소/스트레칭':'#64748b'};
+var PC={'가슴':'#f5f5f7','등':'#c7c7cc','어깨':'#8e8e93','하체':'#636366','팔':'#48484a','유산소/스트레칭':'#3a3a3e'};
 function weekView(cu,pv,r){
  var by={},c={},tot=sum(cu,'s'),h;
- cu.forEach(function(e){by[e.date]=(by[e.date]||0)+e.s;c[e.part]=(c[e.part]||0)+e.s});
- h='<div class="card"><h2>'+fmtD(r.a)+' ~ '+fmtD(r.b)+'</h2><div style="font-size:24px;font-weight:800;letter-spacing:-.5px">'+Object.keys(by).length+'일 출석</div><p class="sub" style="margin:2px 0 10px">7일 중 · 지난주 '+days(pv)+'일</p><div class="cal">'+['일','월','화','수','목','금','토'].map(function(x){return '<div class="h">'+x+'</div>'}).join('');
- for(var i=0;i<7;i++){var k=addD(r.a,i),s=by[k]||0;h+='<div class="'+(s?(s>=12?'d3':s>=6?'d2':'d1'):'')+(k===S.sd?' sel':'')+'" onclick="pickD(\''+k+'\')">'+(s?'🔥':k.slice(8)*1)+'</div>'}
+ cu.forEach(function(e){by[e.date]=(by[e.date]||0)+(e.s||1);c[e.part]=(c[e.part]||0)+e.s});
+ h='<div class="card"><h2>'+fmtD(r.a)+' ~ '+fmtD(r.b)+'</h2><div style="font-size:30px;font-weight:700;letter-spacing:-.9px">'+Object.keys(by).length+'일 출석</div><p class="sub" style="margin:2px 0 10px">7일 중 · 지난주 '+days(pv)+'일</p><div class="cal">'+['일','월','화','수','목','금','토'].map(function(x){return '<div class="h">'+x+'</div>'}).join('');
+ for(var i=0;i<7;i++){var k=addD(r.a,i),s=by[k]||0;h+='<div class="'+(s?(s>=12?'d3':s>=6?'d2':'d1'):'')+(k===S.sd?' sel':'')+'" onclick="pickD(\''+k+'\')">'+(k.slice(8)*1)+'</div>'}
  h+='</div></div>';
  h+='<div class="card"><h2>주간 요약</h2><div class="stat"><span>총 세트</span><b>'+tot+'세트 '+delta(tot,sum(pv,'s'))+'</b></div><div class="stat"><span>총 볼륨</span><b>'+fmtN(vol(cu))+'kg</b></div><p class="sub" style="margin:8px 0 0">지난주: '+sum(pv,'s')+'세트 · '+fmtN(vol(pv))+'kg · '+days(pv)+'일</p></div>';
  h+='<div class="card"><h2>부위별 운동 비율</h2>';
@@ -222,9 +244,9 @@ function weekView(cu,pv,r){
  h+=PARTS.map(function(p){var v=c[p]||0;return '<div class="stat"><span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:'+PC[p]+';margin-right:8px"></i>'+p.split('/')[0]+'</span><b>'+v+'세트 · '+Math.round(v/tot*100)+'%</b></div>'}).join('');
  var core=['가슴','등','하체'],cv=core.map(function(p){return c[p]||0}),lo=Math.min.apply(null,cv),hi=Math.max.apply(null,cv),m;
  var miss=core.filter(function(p){return !(c[p]>0)});
- if(miss.length)m='💡 '+miss.join(', ')+' 운동이 비어 있어요.';
- else if(hi>lo*2)m='💡 '+core[cv.indexOf(hi)]+' 대비 '+core[cv.indexOf(lo)]+' 비중이 낮아요.';
- else m='👍 가슴·등·하체가 고르게 분포돼 있어요.';
+ if(miss.length)m=''+miss.join(', ')+' 운동이 비어 있어요.';
+ else if(hi>lo*2)m=''+core[cv.indexOf(hi)]+' 대비 '+core[cv.indexOf(lo)]+' 비중이 낮아요.';
+ else m='가슴·등·하체가 고르게 분포돼 있어요.';
  return h+'<p style="margin:12px 0 2px;font-weight:700;font-size:14px">가슴·등·하체 밸런스: '+core.map(function(p){return p+' '+Math.round((c[p]||0)/tot*100)+'%'}).join(' · ')+'</p><p class="sub" style="margin:0">'+m+'</p></div>';
 }
 function monthView(cu,pv,r){
@@ -256,7 +278,8 @@ function demo(){
   for(var i=27;i>=0;i--){
     if((i*7+3)%10<4)continue;
     var k=(i*3)%6,q=pl[k],g=Math.floor((27-i)/7)*2.5;
-    D.push({id:id++,date:ago(i),part:q[0],ex:q[1],w:q[2]?q[2]+g:0,r:8+(i%3),s:3+(i%2),pr:''});
+    if(k===5)D.push({id:id++,date:ago(i),part:q[0],ex:q[1],w:0,r:0,s:0,m:20+(i%4)*5,pr:''});
+    else D.push({id:id++,date:ago(i),part:q[0],ex:q[1],w:q[2]+g,r:8+(i%3),s:3+(i%2),pr:''});
     if(i%4===0)D.push({id:id++,date:ago(i),part:'가슴',ex:'벤치프레스',w:60+g,r:8,s:4,pr:''});
   }
   save();render();toast('샘플 데이터를 채웠어요');
