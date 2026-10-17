@@ -62,6 +62,11 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
 .up{color:var(--tx);font-weight:700}.dn{color:var(--sub)}
 .empty{text-align:center;color:var(--sub);padding:24px 8px;font-size:14px;line-height:1.7}
 svg text{font-family:inherit}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.62);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.modal>div{background:var(--card);border-radius:20px;padding:22px;max-width:340px;width:100%}
+.modal p{margin:0 0 20px;line-height:1.65;font-size:15px;white-space:pre-line}
+.modal button{flex:1;padding:14px;border:0;border-radius:12px;font-weight:600;font-size:15px;background:var(--c2);color:var(--tx)}
+.modal button.ok{background:var(--ac);color:var(--acx)}
 </style></head><body>
 <h1 id="ttl"></h1><p class="sub" id="sub"></p>
 <main id="main"></main>
@@ -227,7 +232,7 @@ function prList(l){var out=[],seen={};
  return out}
 function prBox(l){var p=prList(l);if(!p.length)return '';return '<div class="card" style="box-shadow:inset 0 0 0 1px var(--hot)"><div style="font-size:12px;font-weight:600;color:var(--hot);margin-bottom:8px">'+(S.sd===today()?'오늘':fmtD(S.sd))+' 새로 세운 기록</div>'+p.map(function(t){return '<div style="font-size:17px;font-weight:700;color:var(--hot);margin:6px 0">'+esc(t)+'</div>'}).join('')+'</div>'}
 function dayTotal(l,pv){return '<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 총 볼륨</h2><div style="font-size:20px;font-weight:700;letter-spacing:-.6px">총 '+sum(l,'s')+'세트 / '+fmtN(vol(l))+'kg 들어올림'+(mins(l)?' · 유산소 '+mins(l)+'분':'')+'</div><p class="sub" style="margin:8px 0 0">전날: '+sum(pv,'s')+'세트 / '+fmtN(vol(pv))+'kg</p></div>'}
-function dayDetail(l){var h='<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 한 운동</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.part.split('/')[0])+': '+esc(e.ex)+' '+fmtE(e)+'</b>'+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>'});return h+'</div>'}
+function dayDetail(l){var h='<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 한 운동</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.part.split('/')[0])+': '+esc(e.ex)+' '+fmtE(e)+'</b>'+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</div></div>'});return h+'</div>'}
 function addD(k,n){var d=new Date(k+'T00:00:00');d.setDate(d.getDate()+n);return ds(d)}
 function weekStart(k){var d=new Date(k+'T00:00:00');return addD(k,-d.getDay())}
 var PC={'가슴':'#f5f5f7','등':'#c7c7cc','어깨':'#8e8e93','하체':'#636366','팔':'#48484a','유산소/스트레칭':'#3a3a3e'};
@@ -275,7 +280,7 @@ function shiftD(n){var d=new Date(S.sd+'T00:00:00');d.setDate(d.getDate()+n);var
 function dayNav(){return '<div class="card"><div class="row" style="align-items:center"><button class="x" onclick="shiftD(-1)" aria-label="전날">‹</button><input type="date" value="'+S.sd+'" max="'+today()+'" onchange="if(this.value)pickD(this.value)" style="flex:3;text-align:center"><button class="x" onclick="shiftD(1)" aria-label="다음날">›</button></div>'+(S.sd!==today()?'<button class="btn ghost" onclick="pickD(today())">오늘로 돌아가기</button>':'')+'</div>'}
 function dayList(l){var h='<div class="card"><h2>'+fmtD(S.sd)+' 기록</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.ex)+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</b><small>'+esc(e.part)+' · '+(e.w?e.w+'kg × ':'')+e.r+'회 × '+e.s+'세트</small></div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>'});return h+'</div>'}
 function mv(d){var x=new Date(S.cy,S.cm+d,1);S.cy=x.getFullYear();S.cm=x.getMonth();render()}
-function demo(){
+function demo(){if(D.length&&!window._ok){ask('이미 입력한 기록이 '+D.length+'개 있어요.\n샘플 데이터를 추가하면 내 기록과 섞여요.\n그래도 추가할까요?','추가',function(){window._ok=1;demo();window._ok=0});return}
   var pl=[['가슴','벤치프레스',60],['하체','스쿼트',80],['등','랫풀다운',45],['어깨','숄더프레스',30],['팔','바벨컬',20],['유산소/스트레칭','러닝머신',0]],id=Date.now();
   for(var i=27;i>=0;i--){
     if((i*7+3)%10<4)continue;
@@ -286,7 +291,8 @@ function demo(){
   }
   save();render();toast('샘플 데이터를 채웠어요');
 }
-function wipe(){if(confirm('모든 기록을 지울까요?')){D=[];save();render()}}
+function ask(msg,ok,fn){var m=document.createElement('div');m.className='modal';m.innerHTML='<div><p>'+esc(msg)+'</p><div class="row"><button>취소</button><button class="ok">'+ok+'</button></div></div>';var b=m.querySelectorAll('button');b[0].onclick=function(){m.remove()};b[1].onclick=function(){m.remove();fn()};document.body.appendChild(m)}
+function wipe(){ask('모든 기록을 지울까요?\n지운 기록은 되돌릴 수 없어요.','지우기',function(){D=[];save();render()})}
 
 function render(){
   var d=new Date();
