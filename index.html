@@ -207,7 +207,7 @@ function vAtt(){
   h+='</div><p class="sub" style="margin:10px 0 0">운동한 날 '+days(ml)+'일 · 밝을수록 세트가 많은 날</p></div>';
   h+='<div class="seg">'+['오늘','일주일','이번 달'].map(function(p){return '<button class="'+(S.per===p?'on':'')+'" onclick="S.per=\''+p+'\';render()">'+p+'</button>'}).join('')+'</div>';
   var r=range(S.per),cu=sel(r.a,r.b),pv=sel(r.pa,r.pb);
-  if(S.per==='오늘')h+=dayNav()+prBox(cu)+dayTotal(cu,pv)+dayDetail(cu);else if(S.per==='일주일')h+=weekView(cu,pv,r);else if(S.per==='이번 달')h+=monthView(cu,pv,r);else h+='<div class="card"><h2>'+(S.per==='오늘'&&S.sd!==today()?fmtD(S.sd):S.per)+' 요약</h2>'+
+  if(S.per==='오늘')h+=dayNav()+prBox(cu)+dayDetail(cu)+dayTotal(cu,pv);else if(S.per==='일주일')h+=weekView(cu,pv,r);else if(S.per==='이번 달')h+=monthView(cu,pv,r);else h+='<div class="card"><h2>'+(S.per==='오늘'&&S.sd!==today()?fmtD(S.sd):S.per)+' 요약</h2>'+
   '<div class="stat"><span>총 세트</span><b>'+sum(cu,'s')+'세트 '+delta(sum(cu,'s'),sum(pv,'s'))+'</b></div>'+
   '<div class="stat"><span>운동한 날</span><b>'+days(cu)+'일 '+delta(days(cu),days(pv))+'</b></div>'+
   '<div class="stat"><span>총 볼륨</span><b>'+cu.reduce(function(x,e){return x+e.w*e.r*e.s},0).toLocaleString()+'kg</b></div>'+
@@ -224,7 +224,7 @@ function prList(l){var out=[],seen={};
  l.forEach(function(e){if(e.pr==='s')out.push('💪 '+e.ex+' '+e.s+'세트 신기록')});
  return out}
 function prBox(l){var p=prList(l);if(!p.length)return '';return '<div class="card" style="box-shadow:inset 0 0 0 1px var(--hot)"><div style="font-size:12px;font-weight:600;color:var(--hot);margin-bottom:8px">'+(S.sd===today()?'오늘':fmtD(S.sd))+' 새로 세운 기록</div>'+p.map(function(t){return '<div style="font-size:17px;font-weight:700;color:var(--hot);margin:6px 0">'+esc(t)+'</div>'}).join('')+'</div>'}
-function dayTotal(l,pv){return '<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 총 볼륨</h2><div style="font-size:28px;font-weight:700;letter-spacing:-.9px">총 '+sum(l,'s')+'세트 / '+fmtN(vol(l))+'kg 들어올림'+(mins(l)?' · 유산소 '+mins(l)+'분':'')+'</div><p class="sub" style="margin:8px 0 0">전날: '+sum(pv,'s')+'세트 / '+fmtN(vol(pv))+'kg</p></div>'}
+function dayTotal(l,pv){return '<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 총 볼륨</h2><div style="font-size:20px;font-weight:700;letter-spacing:-.6px">총 '+sum(l,'s')+'세트 / '+fmtN(vol(l))+'kg 들어올림'+(mins(l)?' · 유산소 '+mins(l)+'분':'')+'</div><p class="sub" style="margin:8px 0 0">전날: '+sum(pv,'s')+'세트 / '+fmtN(vol(pv))+'kg</p></div>'}
 function dayDetail(l){var h='<div class="card"><h2>'+(S.sd===today()?'오늘':fmtD(S.sd))+' 한 운동</h2>';if(!l.length)return h+'<div class="empty" style="padding:12px">이 날은 기록이 없어요.</div></div>';l.forEach(function(e){h+='<div class="item"><div class="t"><b>'+esc(e.part.split('/')[0])+': '+esc(e.ex)+' '+fmtE(e)+'</b>'+(e.pr?'<span class="badge">'+(e.pr==='w'?'🔥 PR':'💪 세트↑')+'</span>':'')+'</div><button class="x" onclick="del('+e.id+')" aria-label="삭제">×</button></div>'});return h+'</div>'}
 function addD(k,n){var d=new Date(k+'T00:00:00');d.setDate(d.getDate()+n);return ds(d)}
 function weekStart(k){var d=new Date(k+'T00:00:00');return addD(k,-d.getDay())}
