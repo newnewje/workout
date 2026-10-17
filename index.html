@@ -18,8 +18,9 @@ h1{font-size:30px;font-weight:700;margin:6px 4px 4px;letter-spacing:-.9px}
 label{display:block;font-size:12px;font-weight:500;color:var(--sub);margin:0 0 6px}
 input,select,button{font:inherit;color:inherit}
 input,select{width:100%;padding:14px;border:0;border-radius:12px;background:var(--c2);color:var(--tx);font-size:16px}
-input[type=date]{min-height:50px}
-.row{display:flex;gap:10px}.row>div{flex:1}
+input[type=date]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:50px;line-height:1.2;text-align:left}
+input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+.row{display:flex;gap:10px}.row>div{flex:1}.row>*{min-width:0}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
 .chip{border:0;background:var(--c2);color:var(--tx);border-radius:20px;padding:8px 14px;font-size:13px}
 .chip.on{background:var(--ac);color:var(--acx);font-weight:600}
@@ -143,7 +144,7 @@ function vGrow(){
   all.forEach(function(k){if(run>0&&m[k]>run)isPr[k]=1;run=Math.max(run,m[k])});
   var ks=all.filter(function(k){return (!S.g1||k>=S.g1)&&(!S.g2||k<=S.g2)}),v=ks.map(function(k){return m[k]});
   var h='<div class="card"><h2>종목별 최고 무게(PR) 추이</h2><select onchange="S.gEx=this.value;render()">'+exs.map(function(x){return '<option'+(x===S.gEx?' selected':'')+'>'+esc(x)+'</option>'}).join('')+'</select>'+
-  '<div class="row" style="margin-top:10px"><div><label>시작일</label><input type="date" value="'+S.g1+'" onchange="S.g1=this.value;render()"></div><div><label>종료일</label><input type="date" value="'+S.g2+'" onchange="S.g2=this.value;render()"></div></div>'+
+  '<div class="row" style="margin-top:10px"><div><label>시작일</label><input type="date" value="'+(S.g1||all[0])+'" onchange="S.g1=this.value;render()"></div><div><label>종료일</label><input type="date" value="'+(S.g2||all[all.length-1])+'" onchange="S.g2=this.value;render()"></div></div>'+
   ((S.g1||S.g2)?'<button class="btn ghost" onclick="S.g1=\'\';S.g2=\'\';render()">전체 기간 보기</button>':'');
   if(!ks.length)return h+'<div class="empty">이 기간에는 기록이 없어요.</div></div>';
   var W=340,H=210,pl=30,pR=30,pt=22,pb=38,mn=Math.min.apply(null,v),mx=Math.max.apply(null,v);
